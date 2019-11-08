@@ -21,10 +21,6 @@ Cliche Count
 Grammar check
 Spelling check 
 
-### Write results in ./target
-
-### Read text in src
-
 ### Determine type of file by extension
 
 ### Automatic line cleanup routines
