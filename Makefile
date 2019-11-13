@@ -40,7 +40,7 @@ deploy: build
 	@git tag $(NAME)-$(VERSION)
 	@git push && git push --tags
 	@echo "[$(NAME)] Creating github release"
-	@hub release create -d -a target/$(NAME)-$(VERSION).jar -a target/$(NAME)-$(VERSION)-javadoc.jar -a target/$(NAME)-$(VERSION)-sources.jar -F src/docs/releases/release-$(VERSION).txt $(NAME)-$(VERSION)
+	@hub release create -a target/$(NAME)-$(VERSION).jar -a target/$(NAME)-$(VERSION)-javadoc.jar -a target/$(NAME)-$(VERSION)-sources.jar -F src/docs/releases/release-$(VERSION).txt $(NAME)-$(VERSION)
 
 install: build
 	@echo "[$(NAME)] Run with 'java -jar target/$(NAME).jar' or create an alias"
