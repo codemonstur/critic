@@ -1,0 +1,28 @@
+version: 0.1.0
+dependencies:
+  - repository: com.github.codemonstur:jcli:0.9.5
+  - repository: de.julielab:aliasi-lingpipe:4.1.0
+  - repository: net.sf.jazzy:jazzy-core:0.5.2
+  - repository: com.google.code.gson:gson:2.8.6
+  - repository: com.github.codemonstur:simplexml:2.2.0
+  - repository: org.yaml:snakeyaml:1.25
+
+release-notes
+	  echo "[${PROJECT_NAME}] Writing release notes to src/docs/releases/release-${PROJECT_VERSION}.txt"
+	  echo "${PROJECT_VERSION}" > src/docs/releases/release-${PROJECT_VERSION}.txt
+	  echo "" >> src/docs/releases/release-${PROJECT_VERSION}.txt
+	  PREVIOUS_TAG = `git tag | sort -r | head -n 1`
+	  git log --pretty="%s" ${PREVIOUS_TAG}... master >> src/docs/releases/release-${PROJECT_VERSION}.txt
+
+deploy
+    run-target build
+	  echo "[${PROJECT_NAME}] Tagging and pushing to github"
+	  git tag ${PROJECT_NAME}-${PROJECT_VERSION}
+	  git push && git push --tags
+	  echo "[${PROJECT_NAME}] Creating github release"
+	  hub release create -a target/${PROJECT_NAME}-${PROJECT_VERSION}.jar -F src/docs/releases/release-${PROJECT_VERSION}.txt ${PROJECT_NAME}-${PROJECT_VERSION}
+
+install
+    run-target build
+	  sudo cp target/${PROJECT_NAME}.jar /usr/local/bin
+	  sudo chmod +x /usr/local/bin/${PROJECT_NAME}.jar
