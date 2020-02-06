@@ -7,6 +7,10 @@ dependencies:
   - repository: com.github.codemonstur:simplexml:2.2.0
   - repository: org.yaml:snakeyaml:1.25
 
+build
+	  echo "[${PROJECT_NAME}] Building"
+    run-target -i build
+
 release-notes
 	  echo "[${PROJECT_NAME}] Writing release notes to src/docs/releases/release-${PROJECT_VERSION}.txt"
 	  echo "${PROJECT_VERSION}" > src/docs/releases/release-${PROJECT_VERSION}.txt
