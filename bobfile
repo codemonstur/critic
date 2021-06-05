@@ -5,7 +5,7 @@ dependencies:
   - repository: net.sf.jazzy:jazzy-core:0.5.2
   - repository: com.google.code.gson:gson:2.8.6
   - repository: com.github.codemonstur:simplexml:2.2.0
-  - repository: org.yaml:snakeyaml:1.25
+  - repository: org.yaml:snakeyaml:1.28
 
 build
     echo [${PROJECT_NAME}] Building
