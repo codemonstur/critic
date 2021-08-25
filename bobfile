@@ -3,9 +3,9 @@ include https://raw.githubusercontent.com/codemonstur/bobfiles/master/install-lo
 
 version: 0.1.0
 dependencies:
-  - repository: com.github.codemonstur:jcli:0.9.5
-  - repository: de.julielab:aliasi-lingpipe:4.1.0
+  - repository: com.github.codemonstur:jcli:1.3.0
+  - repository: de.julielab:aliasi-lingpipe:4.1.2-JL1.0
   - repository: net.sf.jazzy:jazzy-core:0.5.2
-  - repository: com.google.code.gson:gson:2.8.6
-  - repository: com.github.codemonstur:simplexml:2.2.0
-  - repository: org.yaml:snakeyaml:1.28
+  - repository: com.google.code.gson:gson:2.8.8
+  - repository: com.github.codemonstur:simplexml:2.9.0
+  - repository: org.yaml:snakeyaml:1.29
