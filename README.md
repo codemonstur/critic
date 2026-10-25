@@ -20,14 +20,14 @@ none
 
 ### Future features
 
-There are some listed in `src/main/docs/ideas.md`.
+There are some listed in `src/docs/ideas.md`.
 More ideas are welcome.
 As are bugs, comments and anything else really.
 
 ### Installation
 
 1. Check out the code `git clone https://github.com/codemonstur/critic.git`
-2. Run `make install`
+2. Run `bob install`
 3. You can now run the code with `java -jar target/critic.jar`
 4. \[Optional] Copy the code to `/usr/local/bin`
 5. \[Optional] Create an alias `alias critic='java -jar /usr/local/bin/critic.jar'`
