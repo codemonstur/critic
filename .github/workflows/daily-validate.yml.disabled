@@ -1,0 +1,28 @@
+name: Daily validate
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '27'
+          cache: maven
+      - name: Validate
+        run: |
+          set -o pipefail
+          make validate 2>&1 | tee validate.log
+          status=${PIPESTATUS[0]}
+          if [ "$status" -ne 0 ]; then
+            exit "$status"
+          fi
+          if grep -iE 'warning|error' validate.log; then
+            exit 1
+          fi

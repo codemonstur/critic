@@ -7,6 +7,10 @@ public enum Action {
         Metrics.execute(args);
         SpellingGrammar.execute(args);
     }),
+    check(args -> {
+        Metrics.execute(args);
+        SpellingGrammar.execute(args);
+    }),
     metrics(Metrics::execute),
     spelling(SpellingGrammar::execute);
 

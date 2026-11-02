@@ -24,12 +24,15 @@ public enum Metrics {;
             .forEach(path -> calculateComplexity(scores, path));
 
         final String output = arguments.outputFormat.toString(scores);
-        writeToFile(newFileWithDirectory(arguments.target, "reports", "metrics.json"), output);
+        writeToFile(newFileWithDirectory(arguments.target, "reports",
+                "metrics." + arguments.outputFormat.name()), output);
     }
 
     private static void calculateComplexity(final Map<String, TextComplexity> scores, final Path path) {
         try {
-            scores.put(path.toAbsolutePath().toString(), new TextComplexity(Files.readString(path)));
+            final String content = Files.readString(path);
+            if (content.indexOf('\u0000') >= 0) return; // skip binary files
+            scores.put(path.toAbsolutePath().toString(), new TextComplexity(content));
         } catch (Exception e) {
             Logger.error(e.getMessage());
         }

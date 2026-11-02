@@ -16,7 +16,9 @@ Just started
 
 ### Current features
 
-none
+- Readability metrics (Flesch-Kincaid, Coleman-Liau, ARI, Gunning Fog, SMOG) per file
+- Spelling error count per file
+- Output in JSON, XML, or YAML
 
 ### Future features
 
@@ -32,4 +34,4 @@ As are bugs, comments and anything else really.
 4. \[Optional] Copy the code to `/usr/local/bin`
 5. \[Optional] Create an alias `alias critic='java -jar /usr/local/bin/critic.jar'`
 
-The code requires Java 11.
+The code requires Java 19.

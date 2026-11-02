@@ -28,6 +28,12 @@ public enum Text {;
         return SPELL_DICT;
     }
 
+    /**
+     * Counts the spelling errors in the given English text.
+     *
+     * @param englishText the text to check
+     * @return the number of misspelled words
+     */
     public static long countSpellingErrors(final String englishText) {
         final var numWrong = new Counter();
 

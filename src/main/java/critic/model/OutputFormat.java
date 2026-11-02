@@ -1,12 +1,13 @@
 package critic.model;
 
+import critic.util.IO;
 import java.util.function.Function;
 
 import static critic.util.IO.*;
 
 public enum OutputFormat {
     json(GSON::toJson),
-    xml(XML_PARSER::toXml),
+    xml(IO::toXml),
     yaml(YAML::dump);
 
     private final Function<Object, String> serializer;
