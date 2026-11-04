@@ -1,5 +1,6 @@
 .DEFAULT_GOAL := help
 .EXPORT_ALL_VARIABLES:
+
 .PHONY: help clean docs build test native install run validate release-notes coverage deploy mutation
 
 NAME=`xmllint --xpath "/project/artifactId/text()" pom.xml`
@@ -32,6 +33,7 @@ docs: ## Generate project documentation and write to target/docs
 # Builds the code
 build: ## Runs a mvn clean package
 	@mvn -DskipTests clean package
+
 test: ## Run the tests
 	@mvn test
 
