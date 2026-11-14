@@ -13,8 +13,17 @@ import java.util.Map;
 import static critic.util.IO.newFileWithDirectory;
 import static critic.util.IO.writeToFile;
 
+/**
+ * The {@code SpellingGrammar} enum.
+ */
 public enum SpellingGrammar {;
 
+    /**
+     * Performs the {@code execute} operation.
+     *
+     * @param arguments the arguments
+     * @throws IOException if the operation fails
+     */
     public static void execute(final CliArguments arguments) throws IOException {
         final Map<String, Long> errors = new HashMap<>();
 

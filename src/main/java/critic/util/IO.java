@@ -26,10 +26,22 @@ import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 import static org.yaml.snakeyaml.DumperOptions.FlowStyle.BLOCK;
 import static xmlparser.XmlParser.newXmlParser;
 
+/**
+ * The {@code IO} enum.
+ */
 public enum IO {;
 
+    /**
+     * The {@code GSON} constant.
+     */
     public static final Gson GSON = new Gson();
+    /**
+     * The {@code XML_PARSER} constant.
+     */
     public static final XmlParser XML_PARSER = new XmlParser();
+    /**
+     * The {@code YAML} constant.
+     */
     public static final Yaml YAML = new Yaml(newLoaderOptions(), newRepresenter(), newDumperOptions());
 
     private static Constructor newLoaderOptions() {

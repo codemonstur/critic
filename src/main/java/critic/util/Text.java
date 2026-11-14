@@ -15,6 +15,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.ArrayList;
 
+/**
+ * The {@code Text} enum.
+ */
 public enum Text {;
 
     private static SpellDictionary SPELL_DICT = null;
@@ -49,13 +52,22 @@ public enum Text {;
         return numWrong.get();
     }
 
-    /*
-     * Returns true if the word contains 3 or more syllables
+    /**
+     * Returns true if the word contains 3 or more syllables.
+     *
+     * @param word the word
+     * @return whether the word contains 3 or more syllables
      */
     public static boolean isComplex(final String word) {
         return countSyllables(word) > 2;
     }
 
+    /**
+     * Returns the result of {@code getNumberOfCharacters}.
+     *
+     * @param text the text
+     * @return the result
+     */
     public static int getNumberOfCharacters(final String text) {
         int ret = 0;
         for (final char c : text.toCharArray()) {
@@ -64,8 +76,11 @@ public enum Text {;
         return ret;
     }
 
-    /*
-     * Returns the number of words with 3 or more syllables
+    /**
+     * Returns the number of words with 3 or more syllables.
+     *
+     * @param text the text
+     * @return the number of words with 3 or more syllables
      */
     public static int getNumberOfComplexWords(final String text) {
         int complex = 0;
@@ -75,6 +90,12 @@ public enum Text {;
         return complex;
     }
 
+    /**
+     * Returns the result of {@code getNumberOfWords}.
+     *
+     * @param text the text
+     * @return the result
+     */
     public static int getNumberOfWords(final String text) {
         int words = 0;
         for (final var w : nonASCIILettersToSpace(text).split(" ")) {
@@ -83,6 +104,12 @@ public enum Text {;
         return words;
     }
 
+    /**
+     * Returns the result of {@code getNumberOfSyllables}.
+     *
+     * @param text the text
+     * @return the result
+     */
     public static int getNumberOfSyllables(final String text) {
         int syllables = 0;
         for (final var word : nonASCIILettersToSpace(text).split(" ")) {
@@ -93,6 +120,12 @@ public enum Text {;
         return syllables;
     }
 
+    /**
+     * Returns the result of {@code getNumberOfSentences}.
+     *
+     * @param text the text
+     * @return the result
+     */
     public static int getNumberOfSentences(final String text) {
         final int length = Text.getSentences(text).length;
         if (length > 0) return length;
@@ -100,6 +133,12 @@ public enum Text {;
         return 0;
     }
 
+    /**
+     * Returns the result of {@code nonASCIILettersToSpace}.
+     *
+     * @param text the text
+     * @return the result
+     */
     public static String nonASCIILettersToSpace(final String text) {
         final StringBuilder builder = new StringBuilder();
         for (final char c : text.toCharArray()) {
@@ -108,10 +147,22 @@ public enum Text {;
         return builder.toString().toLowerCase();
     }
 
+    /**
+     * Returns the result of {@code isASCIILetter}.
+     *
+     * @param c the c
+     * @return whether the condition holds
+     */
     public static boolean isASCIILetter(final char c) {
         return c < 128 && Character.isLetter(c);
     }
 
+    /**
+     * Returns the result of {@code getSentences}.
+     *
+     * @param text the text
+     * @return the result
+     */
     public static String[] getSentences(final String text) {
 
         final var tokenList = new ArrayList<String>();
@@ -149,7 +200,7 @@ public enum Text {;
     private static String[] SubSyl = { "cial", "tia", "cius", "cious", "giu", "ion", "iou", "sia$", ".ely$" };
     private static String[] AddSyl = { "ia", "riet", "dien", "iu", "io", "ii", "[aeiouym]bl$", "[aeiou]{3}", "^mc", "ism$", "[^aeiouy][^aeiouy]l$", "[^l]lien","^coa[dglx].", "[^gq]ua[^auieo]", "dnt$" };
 
-    /*
+    /**
      * Estimates the number of syllables in a word.
      *
      * Translation of the Perl code by Greg Fast, found at:
@@ -157,6 +208,9 @@ public enum Text {;
      *
      * For documentation and comments
      * http://search.cpan.org/src/GREGFAST/Lingua-EN-Syllable-0.251/Syllable.pm
+     *
+     * @param word the word
+     * @return the estimated number of syllables
      */
     public static int countSyllables(String word) {
 

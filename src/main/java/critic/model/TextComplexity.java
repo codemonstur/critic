@@ -9,24 +9,65 @@ import static critic.util.Text.*;
  */
 public final class TextComplexity {
 
+    /**
+     * The {@code sentences} field.
+     */
     public final int sentences;
+    /**
+     * The {@code complex} field.
+     */
     public final int complex;
+    /**
+     * The {@code words} field.
+     */
     public final int words;
+    /**
+     * The {@code syllables} field.
+     */
     public final int syllables;
+    /**
+     * The {@code characters} field.
+     */
     public final int characters;
 
+    /**
+     * The {@code automaticReadabilityIndex} field.
+     */
     public final double automaticReadabilityIndex;
+    /**
+     * The {@code colemanLiau} field.
+     */
     public final double colemanLiau;
+    /**
+     * The {@code fleschKincaidGradeLevel} field.
+     */
     public final double fleschKincaidGradeLevel;
 
     // A 90.0–100.0 score is easily understood by the average 11-year-old student.
     // A 60.0–70.0 score is easily understood by the average 13 to 15-year-old students.
     // A 0.0–30.0 score is best understood by university graduates.
+    /**
+     * The {@code fleschReadingEase} field.
+     */
     public final double fleschReadingEase;
+    /**
+     * The {@code gunningFog} field.
+     */
     public final double gunningFog;
+    /**
+     * The {@code smog} field.
+     */
     public final double smog;
+    /**
+     * The {@code smogIndex} field.
+     */
     public final double smogIndex;
 
+    /**
+     * Creates a new instance.
+     *
+     * @param text the text
+     */
     public TextComplexity(final String text) {
         this.sentences = getNumberOfSentences(text);
         this.complex = getNumberOfComplexWords(text);
@@ -46,6 +87,9 @@ public final class TextComplexity {
     /**
      * http://en.wikipedia.org/wiki/SMOG_Index
      * @return The SMOG index of the text
+     
+     * @param complex the complex
+     * @param sentences the sentences
      */
     public static double calculateSMOGIndex(final int complex, final int sentences) {
         if (sentences == 0) return Double.MIN_VALUE;
@@ -56,6 +100,9 @@ public final class TextComplexity {
     /**
      * http://en.wikipedia.org/wiki/SMOG
      * @return the SMOG value for the text
+     
+     * @param complex the complex
+     * @param sentences the sentences
      */
     public static double calculateSMOG(final int complex, final int sentences) {
         if (sentences == 0) return Double.MIN_VALUE;
@@ -65,6 +112,10 @@ public final class TextComplexity {
     /**
      * http://en.wikipedia.org/wiki/Flesch-Kincaid_Readability_Test
      * @return the Flesch_Reading Ease value for the text
+     
+     * @param words the words
+     * @param sentences the sentences
+     * @param syllables the syllables
      */
     public static double calculateFleschReadingEase(final int words, final int sentences, final int syllables) {
         if (sentences == 0 || words == 0) return Double.MIN_VALUE;
@@ -75,6 +126,10 @@ public final class TextComplexity {
     /**
      * http://en.wikipedia.org/wiki/Flesch-Kincaid_Readability_Test
      * @return the Flesch-Kincaid_Readability_Test value for the text
+     
+     * @param words the words
+     * @param sentences the sentences
+     * @param syllables the syllables
      */
     public static double calculateFleschKincaidGradeLevel(final int words, final int sentences, final int syllables) {
         if (sentences == 0 || words == 0) return Double.MIN_VALUE;
@@ -85,6 +140,10 @@ public final class TextComplexity {
     /**
      * http://en.wikipedia.org/wiki/Automated_Readability_Index
      * @return the Automated Readability Index for text
+     
+     * @param characters the characters
+     * @param words the words
+     * @param sentences the sentences
      */
     public static double calculateAutomatedReadabilityIndex(final int characters, final int words, final int sentences) {
         if (words == 0 || sentences == 0) return Double.MIN_VALUE;
@@ -96,6 +155,10 @@ public final class TextComplexity {
      * The original written by Panos Ipeirotis is wrong. This is corrected.
      * http://en.wikipedia.org/wiki/Gunning-Fog_Index
      * @return the Gunning-Fog Index for text
+     
+     * @param words the words
+     * @param sentences the sentences
+     * @param complex the complex
      */
     public static double calculateGunningFog(final int words, final int sentences, final int complex) {
         if (words == 0 || sentences == 0) return Double.MIN_VALUE;
@@ -107,6 +170,10 @@ public final class TextComplexity {
      * The original written by Panos Ipeirotis is wrong. This is corrected.
      * http://en.wikipedia.org/wiki/Coleman-Liau_Index
      * @return The Coleman-Liau_Index value for the text
+     
+     * @param words the words
+     * @param characters the characters
+     * @param sentences the sentences
      */
     public static double calculateColemanLiau(final int words, final int characters, final int sentences) {
         if (words == 0) return Double.MIN_VALUE;

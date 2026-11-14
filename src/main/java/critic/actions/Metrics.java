@@ -14,8 +14,17 @@ import static critic.util.IO.newFileWithDirectory;
 import static critic.util.IO.writeToFile;
 import static java.nio.file.Files.walk;
 
+/**
+ * The {@code Metrics} enum.
+ */
 public enum Metrics {;
 
+    /**
+     * Performs the {@code execute} operation.
+     *
+     * @param arguments the arguments
+     * @throws IOException if the operation fails
+     */
     public static void execute(final CliArguments arguments) throws IOException {
         final Map<String, TextComplexity> scores = new HashMap<>();
 
